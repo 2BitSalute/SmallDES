@@ -1,4 +1,4 @@
-namespace Mayak.ProbabilityDistributions;
+namespace Mayak.ProbabilityDistributions.Continuous;
 
 public abstract class ContinuousProbabilityDistribution : ProbabilityDistribution<double>
 {

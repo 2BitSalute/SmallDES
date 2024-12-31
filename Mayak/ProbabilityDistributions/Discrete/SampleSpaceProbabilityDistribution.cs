@@ -1,5 +1,9 @@
-namespace Mayak.ProbabilityDistributions;
+namespace Mayak.ProbabilityDistributions.Discrete;
 
+/// <summary>
+/// Useful for deriving a distribution from a set of samples.
+/// </summary>
+/// <typeparam name="T">The sample value type, e.g., height in inches.</typeparam>
 public class SampleSpaceProbabilityDistribution<T> : DiscreteProbabilityDistribution<T> where T : notnull
 {
     private readonly Dictionary<T, double> density = [];

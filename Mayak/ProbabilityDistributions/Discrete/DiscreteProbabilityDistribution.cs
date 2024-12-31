@@ -1,4 +1,4 @@
-namespace Mayak.ProbabilityDistributions;
+namespace Mayak.ProbabilityDistributions.Discrete;
 
 public abstract class DiscreteProbabilityDistribution<T> : ProbabilityDistribution<T>
 {

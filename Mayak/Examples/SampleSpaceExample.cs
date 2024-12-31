@@ -1,5 +1,4 @@
-using System.Diagnostics;
-using Mayak.ProbabilityDistributions;
+using Mayak.ProbabilityDistributions.Discrete;
 
 namespace Mayak.Examples;
 
@@ -27,7 +26,7 @@ public class SampleSpaceExample : IExample
 
         var densityFunction = studentHeightFrequency.Select(el => (el.Height, 1.0 * el.NumStudents / totalStudents));
 
-        foreach(var el in densityFunction)
+        foreach (var el in densityFunction)
         {
             Console.WriteLine($"{el.Height}: {el.Item2}");
         }
@@ -58,7 +57,7 @@ public class SampleSpaceExample : IExample
         Console.Write("Samples: ");
 
         using var enumerator = dist.GetEnumerator();
-        for(int i = 0; i < 30; i++)
+        for (int i = 0; i < 30; i++)
         {
             enumerator.MoveNext();
             Console.Write($"{enumerator.Current} ");

@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-
-using System.Reflection;
+﻿using System.Reflection;
 using Mayak.Examples;
 
 // Get the assembly where the code is running
