@@ -1,5 +1,9 @@
 namespace Mayak.ProbabilityDistributions.Continuous;
 
+/// <summary>
+/// A question you might want to ask is:
+///     - What is the probability of obtaining a temperature at some moment of time
+/// </summary>
 public abstract class ContinuousProbabilityDistribution : ProbabilityDistribution<double>
 {
     /// <summary>
