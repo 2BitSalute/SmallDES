@@ -36,9 +36,9 @@ public class GeometricProbabilityDistribution : DiscreteProbabilityDistribution<
         this.inclusive = inclusive;
     }
 
-    public double Mean => 1.0 / this.bernoulli.Mean;
+    public override double Mean => 1.0 / this.bernoulli.Mean;
 
-    public double Variance => (1.0 - this.bernoulli.Mean) / Math.Pow(this.bernoulli.Mean, 2.0);
+    public override double Variance => (1.0 - this.bernoulli.Mean) / Math.Pow(this.bernoulli.Mean, 2.0);
 
     public override double Density(int x)
     {

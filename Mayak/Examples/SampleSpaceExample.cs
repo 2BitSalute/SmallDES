@@ -31,7 +31,7 @@ public class SampleSpaceExample : IExample
             Console.WriteLine($"{el.Height}: {el.Item2}");
         }
 
-        var data = new List<int>
+        var data = new List<double>
         {
             60, 60, 60,
             62, 62,
@@ -41,7 +41,7 @@ public class SampleSpaceExample : IExample
             70, 70, 70
         };
 
-        var dist = new SampleSpaceProbabilityDistribution<int>(data);
+        var dist = new SampleSpaceProbabilityDistribution(data);
 
         var density64 = dist.Density(64);
 

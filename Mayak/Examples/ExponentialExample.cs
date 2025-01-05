@@ -16,7 +16,7 @@ public class ExponentialExample : IExample
         Console.Write("How much time to the next customer arriving?\nSamples:");
 
         using var samples = dist.GetEnumerator();
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             samples.MoveNext();
 

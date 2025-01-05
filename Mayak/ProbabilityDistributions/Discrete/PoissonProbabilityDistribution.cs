@@ -36,13 +36,13 @@ public class PoissonProbabilityDistribution : DiscreteProbabilityDistribution<in
         this.mean = mean;
     }
 
-    public double Mean => this.mean;
+    public override double Mean => this.mean;
 
     /// <summary>
     /// Because each event occurs independently, there is no added variability beyond
     /// the randomness already inherent in the average rate (mean)
     /// </summary>
-    public double Variance => this.mean;
+    public override double Variance => this.mean;
 
     /// <summary>
     /// How many events occur in the next unit interval?

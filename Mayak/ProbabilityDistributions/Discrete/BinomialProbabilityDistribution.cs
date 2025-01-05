@@ -1,4 +1,6 @@
 
+using System.ComponentModel;
+
 namespace Mayak.ProbabilityDistributions.Discrete;
 
 /// <summary>
@@ -34,6 +36,10 @@ public class BinomialProbabilityDistribution : DiscreteProbabilityDistribution<i
         this.bernoulli = new BernoulliProbabilityDistribution(mean / numberOfEvents);
         this.n = numberOfEvents;
     }
+
+    public override double Mean => this.n * this.bernoulli.Mean;
+
+    public override double Variance => this.n * this.bernoulli.Variance;
 
     /// <summary>
     /// An adequate but slow method is to sample Bernoulli N times.

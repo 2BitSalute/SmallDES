@@ -65,6 +65,10 @@ public abstract class ProbabilityDistribution<T> : IProbabilityDistribution<T>
         return MathFunctions.Factorial(n) / MathFunctions.Factorial(n - m);
     }
 
+    public abstract double Mean { get; }
+
+    public abstract double Variance { get; }
+
     /// <inheritdoc />
     public abstract double Density(T x);
 

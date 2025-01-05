@@ -1,18 +1,21 @@
+using System.Numerics;
+using System.Security.AccessControl;
+
 namespace Mayak.ProbabilityDistributions.Discrete;
 
 /// <summary>
 /// Useful for deriving a distribution from a set of samples.
 /// </summary>
 /// <typeparam name="T">The sample value type, e.g., height in inches.</typeparam>
-public class SampleSpaceProbabilityDistribution<T> : DiscreteProbabilityDistribution<T> where T : notnull
+public class SampleSpaceProbabilityDistribution : DiscreteProbabilityDistribution<double>
 {
-    private readonly Dictionary<T, double> density = [];
-    private readonly IList<T> data;
+    private readonly Dictionary<double, double> density = [];
+    private readonly IList<double> data;
 
-    public SampleSpaceProbabilityDistribution(IList<T> data)
+    public SampleSpaceProbabilityDistribution(IList<double> data)
     {
         this.data = data;
-        var frequencies = new Dictionary<T, int>();
+        var frequencies = new Dictionary<double, int>();
 
         foreach (var datum in data)
         {
@@ -32,7 +35,12 @@ public class SampleSpaceProbabilityDistribution<T> : DiscreteProbabilityDistribu
         }
     }
 
-    public override double Density(T x)
+    public override double Mean => this.density.Aggregate(0.0, (acc, pair) => acc + (pair.Key * pair.Value));
+
+    // TODO: this and other calculations can be memoized
+    public override double Variance => Math.Pow(this.density.Aggregate(0.0, (acc, pair) => acc + (pair.Key * pair.Value * pair.Value)), 2) - Math.Pow(this.Mean, 2);
+
+    public override double Density(double x)
     {
         if (density.TryGetValue(x, out var probability))
         {
@@ -42,7 +50,7 @@ public class SampleSpaceProbabilityDistribution<T> : DiscreteProbabilityDistribu
         return 0.0;
     }
 
-    protected override T InverseDistribution(double x)
+    protected override double InverseDistribution(double x)
     {
         // Oof, I think this will work.
         // Smalltalk is 1-indexed, so they add 1 here

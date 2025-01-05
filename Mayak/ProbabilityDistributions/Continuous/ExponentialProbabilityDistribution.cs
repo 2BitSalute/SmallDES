@@ -31,9 +31,13 @@ public class ExponentialProbabilityDistribution : ContinuousProbabilityDistribut
         this.μ = 1.0 / mean;
     }
 
-    public double Mean => 1.0 / this.μ;
+    /// <summary>
+    /// The mean is the number of occurrences per unit of time (the rate).
+    /// It is the reciprocal of time between arrivals.
+    /// </summary>
+    public override double Mean => 1.0 / this.μ;
 
-    public double Variance => 1.0 / Math.Pow(this.μ, 2);
+    public override double Variance => 1.0 / Math.Pow(this.μ, 2);
 
     /// <summary>
     ///
@@ -55,14 +59,15 @@ public class ExponentialProbabilityDistribution : ContinuousProbabilityDistribut
         var start = aList[0];
         var end = aList[^1];
 
-        if (end <= 0.0)
+        if (start < 0.0 || end <= start)
         {
             return 0.0;
         }
 
         return
-            1.0 - Math.Exp(-(this.μ * end)) -
-                (start > 0 ? this.Distribution([0.0, start]) : 0.0);
+            1.0 -
+            Math.Exp(-(this.μ * end)) -
+            this.Distribution([0.0, start]);
     }
 
     /// <summary>

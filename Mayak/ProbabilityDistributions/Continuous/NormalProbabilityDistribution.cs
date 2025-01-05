@@ -10,6 +10,10 @@ namespace Mayak.ProbabilityDistributions.Continuous;
 /// </summary>
 public class NormalProbabilityDistribution : ContinuousProbabilityDistribution
 {
+    public override double Mean => throw new NotImplementedException();
+
+    public override double Variance => throw new NotImplementedException();
+
     public override double Density(double x)
     {
         throw new NotImplementedException();

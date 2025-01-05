@@ -20,9 +20,9 @@ public class UniformProbabilityDistribution : ContinuousProbabilityDistribution
         this.end = end;
     }
 
-    public double Mean => (this.start + this.end) / 2;
+    public override double Mean => (this.start + this.end) / 2;
 
-    public double Variance => Math.Pow(this.end - this.start, 2) / 12;
+    public override double Variance => Math.Pow(this.end - this.start, 2) / 12;
 
     public override double Density(double x)
     {

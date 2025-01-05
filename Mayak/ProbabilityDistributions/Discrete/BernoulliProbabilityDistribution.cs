@@ -13,9 +13,9 @@ public class BernoulliProbabilityDistribution : DiscreteProbabilityDistribution<
 {
     private readonly double probabilityOfSuccess;
 
-    public double Mean => this.probabilityOfSuccess;
+    public override double Mean => this.probabilityOfSuccess;
 
-    public double Variance => this.probabilityOfSuccess * (1.0 - this.probabilityOfSuccess);
+    public override double Variance => this.probabilityOfSuccess * (1.0 - this.probabilityOfSuccess);
 
     /// <summary>
     /// Probability of success and probability of failure (the complement of success).

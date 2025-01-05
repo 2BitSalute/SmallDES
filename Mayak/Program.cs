@@ -16,7 +16,7 @@ foreach (var type in typesImplementingIExample)
 
     if (instance != null)
     {
-        Console.WriteLine($"*** {instance.Name} ***");
+        Console.WriteLine($"\n\n*** {instance.Name} ***");
         instance.Run();
     }
 }
