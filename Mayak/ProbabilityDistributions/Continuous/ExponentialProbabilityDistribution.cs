@@ -85,9 +85,17 @@ public class ExponentialProbabilityDistribution : ContinuousProbabilityDistribut
         return 0.0;
     }
 
-    protected override double InverseDistribution(double x)
+    private double InverseDistribution(double x)
     {
         // Implementation according to Knuth, Vol. 2, p. 114
         return (-Math.Log(x)) / this.μ;
+    }
+
+    public override IEnumerator<double> GetEnumerator()
+    {
+        while (true)
+        {
+            yield return this.InverseDistribution(Uniform.NextDouble());
+        }
     }
 }

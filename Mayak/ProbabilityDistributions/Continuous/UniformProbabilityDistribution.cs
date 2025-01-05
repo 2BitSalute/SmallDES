@@ -1,3 +1,4 @@
+
 namespace Mayak.ProbabilityDistributions.Continuous;
 
 /// <summary>
@@ -36,7 +37,15 @@ public class UniformProbabilityDistribution : ContinuousProbabilityDistribution
         }
     }
 
-    protected override double InverseDistribution(double x)
+    public override IEnumerator<double> GetEnumerator()
+    {
+        while (true)
+        {
+            yield return this.InverseDistribution(Uniform.NextDouble());
+        }
+    }
+
+    private double InverseDistribution(double x)
     {
         // A random point within the interval
         return this.start + (x * (this.end - this.start));

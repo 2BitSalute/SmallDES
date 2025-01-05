@@ -1,3 +1,4 @@
+
 namespace Mayak.ProbabilityDistributions.Discrete;
 
 /// <summary>
@@ -53,7 +54,15 @@ public class GeometricProbabilityDistribution : DiscreteProbabilityDistribution<
             this.bernoulli.Mean * Math.Pow(1.0 - this.bernoulli.Mean, x);
     }
 
-    protected override int InverseDistribution(double x)
+    public override IEnumerator<int> GetEnumerator()
+    {
+        while (true)
+        {
+            yield return this.InverseDistribution(Uniform.NextDouble());
+        }
+    }
+
+    private int InverseDistribution(double x)
     {
         // According to Smalltalk-80 p. 430, this method is from
         // Knuth, Vol2, pp. 116-117

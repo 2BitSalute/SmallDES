@@ -50,7 +50,15 @@ public class SampleSpaceProbabilityDistribution : DiscreteProbabilityDistributio
         return 0.0;
     }
 
-    protected override double InverseDistribution(double x)
+    public override IEnumerator<double> GetEnumerator()
+    {
+        while (true)
+        {
+            yield return this.InverseDistribution(Uniform.NextDouble());
+        }
+    }
+
+    private double InverseDistribution(double x)
     {
         // Oof, I think this will work.
         // Smalltalk is 1-indexed, so they add 1 here

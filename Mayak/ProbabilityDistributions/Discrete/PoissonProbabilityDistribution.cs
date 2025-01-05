@@ -91,11 +91,4 @@ public class PoissonProbabilityDistribution : DiscreteProbabilityDistribution<in
 
         return Math.Pow(this.mean, x) * Math.Exp(-this.mean) / MathFunctions.Factorial(x);
     }
-
-    protected override int InverseDistribution(double x)
-    {
-        // Because we override GetEnumerator, we don't need this method,
-        // which is used from the base class's GetEnumerator.
-        throw new NotImplementedException();
-    }
 }

@@ -1,3 +1,4 @@
+
 namespace Mayak.ProbabilityDistributions.Discrete;
 
 /// <summary>
@@ -37,5 +38,11 @@ public class BernoulliProbabilityDistribution : DiscreteProbabilityDistribution<
 
     public override double Density(bool x) => x ? this.probabilityOfSuccess : (1.0 - this.probabilityOfSuccess);
 
-    protected override bool InverseDistribution(double x) => x <= this.probabilityOfSuccess;
+    public override IEnumerator<bool> GetEnumerator()
+    {
+        while (true)
+        {
+            yield return Uniform.NextDouble() <= this.probabilityOfSuccess;
+        }
+    }
 }

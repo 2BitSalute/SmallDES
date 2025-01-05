@@ -85,13 +85,4 @@ public class BinomialProbabilityDistribution : DiscreteProbabilityDistribution<i
             return 0.0;
         }
     }
-
-    protected override int InverseDistribution(double x)
-    {
-        // Because we did not implement the enumeration in terms of inverse distribution,
-        // we don't need this method.
-        // TODO: perhaps, this method does not need to be a part of the interface, then.
-        // TODO: what about ComputeSampleOutOf? It probably also doesn't belong in the base class.
-        throw new NotImplementedException();
-    }
 }

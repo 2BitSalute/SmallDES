@@ -28,25 +28,12 @@ public abstract class ProbabilityDistribution<T> : IProbabilityDistribution<T>
     /// solve for the inverse. The inverse solution is defined by the subclass.
     /// </summary>
     /// <returns>The next random sample</returns>
-    public virtual IEnumerator<T> GetEnumerator()
-    {
-        while (true)
-        {
-            yield return this.InverseDistribution(Uniform.NextDouble());
-        }
-    }
+    public abstract IEnumerator<T> GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator()
     {
         throw new NotImplementedException();
     }
-
-    /// <summary>
-    /// Subclass responsibility
-    /// </summary>
-    /// <param name="x"></param>
-    /// <returns>The solution for the inverse distribution</returns>
-    protected abstract T InverseDistribution(double x);
 
     /// <summary>
     /// Compute the number of ways one can draw a sample without
